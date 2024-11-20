@@ -1,0 +1,13 @@
+# pvc-nfs.yaml
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: my-pvc-nfs
+  namespace: kubdz2-2
+spec:
+  storageClassName: nfs-csi
+  accessModes: [ReadWriteOnce]
+  resources:
+    requests:
+      storage: 2Gi

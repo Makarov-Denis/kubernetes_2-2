@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: netology-app-multitool
+  namespace: kubdz2-2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: main
+  template:
+    metadata:
+      labels:
+        app: main
+    spec:
+      containers:
+      - name: multitool
+        image: wbitt/network-multitool
+        volumeMounts:
+          - name: my-vol-pvc
+            mountPath: /multitool_dir
+      volumes:
+        - name: my-vol-pvc
+          persistentVolumeClaim:
+            claimName: my-pvc-nfs

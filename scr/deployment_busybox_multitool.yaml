@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: netology-app-multitool-busybox
+  namespace: kubdz2-2
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: main
+  template:
+    metadata:
+      labels:
+        app: main
+    spec:
+      containers:
+      - name: busybox
+        image: busybox
+        command: ['sh', '-c', 'while true; do echo "current date = $(date)" >> /busybox_dir/date.log; sleep 5; done']
+        volumeMounts:
+          - name: my-vol-pvc
+            mountPath: /busybox_dir
+
+      - name: multitool
+        image: wbitt/network-multitool
+        volumeMounts:
+          - name: my-vol-pvc
+            mountPath: /multitool_dir
+      volumes:
+        - name: my-vol-pvc
+          persistentVolumeClaim:
+            claimName: pvc-vol
