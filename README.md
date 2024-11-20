@@ -104,10 +104,10 @@ StorageClass:
 
 2. Проверим чтение и запись файла изнутри пода:
 
-3. Проверим файл на ноде:
-
 ![321](https://github.com/user-attachments/assets/8e76fc0d-8f78-483b-ab7d-8bb19c2062ed)
 
+3. Проверим файл на ноде:
+   
 ![finish](https://github.com/user-attachments/assets/409e13cf-23c3-4670-a6de-618e6fff8681)
 
 
